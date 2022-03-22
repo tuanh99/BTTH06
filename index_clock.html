@@ -1,85 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .app {
-            min-width: 600px;
-            height: 60px;
-            display: flex;
-            border: 2px solid blue;
-        }
-
-        .clock {
-            width: 30%;
-            background-color: red;
-            height: 100%;
-            line-height: 60px;
-            text-align: center;
-        }
-
-        .title {
-            width: 70%;
-            height: 100%;
-            line-height: 60px;
-            text-align: center;
-            background-color: #999;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="app">
-        <div class="clock"></div>
-        <div class="title" style="color: red;"></div>
-    </div>
-
-
-    <script>
-        const title = document.querySelector('.title')
-
-        setInterval(() => {
-            const date = new Date()
-            let hours = date.getHours()
-            let minutes = date.getMinutes()
-            let seconds = date.getSeconds()
-
-            title.style.color = title.style.color === 'red' ? '#000' : 'red'
-
-            if (hours >= 0 && hours < 12) {
-                title.innerText = 'Chào buổi sáng'
-                title.style.fontSize = '16px'
-            }
-            if (hours > 12 && hours < 17) {
-                title.innerText = 'Chào buổi chiều'
-                title.style.fontSize = '20px'
-            } else {
-                title.innerText = 'Chào buổi tối'
-                title.style.fontSize = '24px'
-            }
-
-            document.querySelector('.clock').innerText = `${hours} : ${minutes} : ${seconds}`
-        }, 1000)
-    </script>
-</body>
-
-</html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Lời chúc</title>
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="./assets/css/style_clock.css">
+ </head>
+ <body>
+     <div class="container">
+        <div id="dongho">
+            <div id="thoigian">
+                <div>
+                    <span id="gio">00</span><span>:</span>
+                </div>
+                <div>
+                      <span id="phut">00</span><span>:</span>
+                </div>
+                <div>
+                    <span id="giay">00</span>
+                </div>
+            </div>
+        </div>
+        <div class="loichuc">
+           
+        </div>
+     </div>
+     
+     <script src="./assets/js/clock.js"></script>
+ </body>
+ </html>

@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+#thoigian{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+#dongho{
+    width: 30%;
+    border: 1px solid black;
+    border-right: none;
+    background-color: black;
+}
+.loichuc{
+    width: 70%;
+    border: 1px solid black;
+    text-align: center;
+    color:red;
+    font-size: 5rem;
+    animation:lc 1s infinite ;
+}
+@keyframes lc {
+    from {
+        color:red;
+    }
+    to {
+        color:black;
+    }
+}
+#dongho #thoigian div{
+    position: relative;
+    margin: 0 5px;
+}
+#dongho #thoigian div span{
+    position: relative;
+    color: red;
+    width:200px;
+    height: 160px;
+    font-weight: 300;
+    align-items: center;
+    font-size: 5rem;
+    z-index:3;
+}
