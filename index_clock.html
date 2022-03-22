@@ -1,85 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sử dụng đối tượng Window</title>
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      body {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .app {
-            min-width: 600px;
-            height: 60px;
-            display: flex;
-            border: 2px solid blue;
-        }
+      .app {
+        min-width: 600px;
+        height: 60px;
+        display: flex;
+        border: 2px solid blue;
+      }
 
-        .clock {
-            width: 30%;
-            background-color: red;
-            height: 100%;
-            line-height: 60px;
-            text-align: center;
-        }
+      .clock {
+        width: 30%;
+        background-color: #000;
+        height: 100%;
+        line-height: 60px;
+        text-align: center;
+      }
 
-        .title {
-            width: 70%;
-            height: 100%;
-            line-height: 60px;
-            text-align: center;
-            background-color: #999;
-        }
+      .title {
+        width: 70%;
+        height: 100%;
+        line-height: 60px;
+        text-align: center;
+        background-color: #ccc;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="app">
-        <div class="clock"></div>
-        <div class="title" style="color: red;"></div>
+      <div class="clock">
+        <img class="time" />
+        <img class="time" />
+        <img src="./assets/icons/BTTH_icons/haicham.gif" alt="" />
+        <img class="time" />
+        <img class="time" />
+        <img src="./assets/icons/BTTH_icons/haicham.gif" alt="" />
+        <img class="time" />
+        <img class="time" />
+      </div>
+      <div class="title" style="color: red"></div>
     </div>
 
-
     <script>
-        const title = document.querySelector('.title')
+      const title = document.querySelector(".title")
+      const times = document.querySelectorAll(".time")
 
-        setInterval(() => {
-            const date = new Date()
-            let hours = date.getHours()
-            let minutes = date.getMinutes()
-            let seconds = date.getSeconds()
+      setInterval(() => {
+        const date = new Date()
+        let hours = date.getHours().toString()
+        let minute = date.getMinutes().toString()
+        let second = date.getSeconds().toString()
 
-            title.style.color = title.style.color === 'red' ? '#000' : 'red'
+        if (hours >= 0 && hours < 12) {
+          title.innerText = "Chào buổi sáng"
+          title.style.fontSize = "16px"
+        }
+        if (hours > 12 && hours < 17) {
+          title.innerText = "Chào buổi chiều"
+          title.style.fontSize = "20px"
+        } else {
+          title.innerText = "Chào buổi tối"
+          title.style.fontSize = "24px"
+        }
 
-            if (hours >= 0 && hours < 12) {
-                title.innerText = 'Chào buổi sáng'
-                title.style.fontSize = '16px'
-            }
-            if (hours > 12 && hours < 17) {
-                title.innerText = 'Chào buổi chiều'
-                title.style.fontSize = '20px'
-            } else {
-                title.innerText = 'Chào buổi tối'
-                title.style.fontSize = '24px'
-            }
+        second.length < 2 ? (second = "0" + second) : null
+        minute.length < 2 ? (second = "0" + minute) : null
+        hours.length < 2 ? (second = "0" + hours) : null
 
-            document.querySelector('.clock').innerText = `${hours} : ${minutes} : ${seconds}`
-        }, 1000)
+        times[5].src = `./assets/icons/BTHH_icons/0${second[1]}.gif`
+        times[4].src = `./assets/icons/BTTH_icons/0${second[0]}.gif`
+        times[3].src = `./assets/icons/BTTH_icons/0${minute[1]}.gif`
+        times[2].src = `./assets/icons/BTTH_icons/0${minute[0]}.gif`
+        times[1].src = `./assets/icons/BTTH_icons/0${hours[1]}.gif`
+        times[0].src = `./assets/icons/BTTH_icons/0${hours[0]}.gif`
+      }, 1000) // sau 1s sẽ chạy hàm này 1 lần nữa
+      setInterval(() => {
+        title.style.color = title.style.color === "red" ? "#000" : "red"
+      }, 600) // dùng toán tử 3 ngôi
     </script>
-</body>
-
+  </body>
 </html>
